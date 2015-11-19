@@ -1,6 +1,6 @@
 from django import forms
-from django.contrib.comments.models import Comment
-from django.contrib.comments.forms import CommentForm, COMMENT_MAX_LENGTH, CommentSecurityForm
+from django_comments.models import Comment
+from django_comments.forms import CommentForm, COMMENT_MAX_LENGTH, CommentSecurityForm
 from django.forms.forms import DeclarativeFieldsMetaclass
 from django.utils.translation import ungettext, ugettext_lazy as _
 #from captcha.fields import CaptchaField
@@ -15,12 +15,12 @@ class MyCommentForm(CommentForm):
 
     __metaclass__ = CommentMetaclass
 
-    def __init__(self, target_object, data=None, initial=None, files=None):
-        self.target_object = target_object
-        if initial is None:
-            initial = {}
-        initial.update(self.generate_security_data())
-        super(CommentSecurityForm, self).__init__(data=data, initial=initial, files=files)
+    # def __init__(self, target_object, data=None, initial=None, files=None):
+    #     self.target_object = target_object
+    #     if initial is None:
+    #         initial = {}
+    #     initial.update(self.generate_security_data())
+    #     super(CommentSecurityForm, self).__init__(data=data, initial=initial, files=files)
 
     name          = forms.CharField(label=_("Name"), max_length=50, widget=forms.TextInput(attrs={'class' : 'validate[required] required', 'placeholder' : _("Name") }), )
     url           = forms.CharField(label=_("Phone"), max_length=50, widget=forms.TextInput(attrs={'class' : '', 'placeholder' : _("Phone") }), required=False)
