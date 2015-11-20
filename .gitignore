@@ -1,0 +1,7 @@
+*.pyc
+*.swo
+*.swp
+env
+django_comments
+customcomments
+db.sqlite3
